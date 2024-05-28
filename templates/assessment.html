@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+
+<div class="">
+    <h1>Assessment Questionnaire:</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for form in formset %}
+        <div class="row">
+            <div class="col-8 mb-3 form-label">
+                <div class="row">
+                    {{ form.id|as_crispy_field }}
+                    <div class="col-2 form-label">
+                        {{ form.Domain|as_crispy_field }}
+                    </div>
+                    <div class="col-2 form-label">
+                        {{ form.SubDomain|as_crispy_field }}
+                    </div>
+                    <div class="col-auto">
+                        <div class="row form-label">{{ form.Question|as_crispy_field }}</div>
+                        <div class="row form-text">{{ form.Description|as_crispy_field }}</div>
+                        <div class="row form-text" hidden>{{ form.Remediation|as_crispy_field }}</div>
+                        <div class="row form-text" hidden>{{ form.Risk|as_crispy_field }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 mb-3">
+                {{ form.Response|as_crispy_field }}
+            </div>
+            <div class="col-2 mb-3">
+                {{ form.Remarks|as_crispy_field }}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-auto"><input class="btn btn-primary" type="submit" value="Generate Report"></div>
+            <div class="col-auto"><a class="btn btn-danger" href="{% url 'home' %}">Go Back</a></div>
+        </div>
+
+
+
+
+
+        <!-- <ul>
+            {% for q in questions %}
+                <div class="row g-3 mb-3 align-items-center input-group">
+                    <div class="col-auto">
+                        {{ q.id }}
+                    </div>
+                    <div class="col-4">
+                        <label for="q{{ q.id }}-Response" class="col-form-label">{{ q.Question }}</label>
+                    </div>
+                    <div class="col-4">
+                        <span id="q{{ q.id }}-Description" class="form-text">
+                            {{ q.Description }}
+                        </span>
+                    </div>
+                    <div class="col-auto">
+                        <select id="q{{ q.id }}-Response" class="form-select">
+                            <option value="no">No</option>
+                            <option value="partial">Partial</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="q{{ q.id }}-Remarks" class="form-control" placeholder="Remarks">
+                    </div>
+                </div>
+            {% endfor %}
+        </ul>
+        <div class="row">
+            <div class="col-auto"><input class="btn btn-primary" type="submit" value="Generate Report"></div>
+            <div class="col-auto"><a class="btn btn-danger" href="{% url 'home' %}">Go Back</a></div>
+        </div> -->
+    </form>
+</div>
+
+{% endblock content %}

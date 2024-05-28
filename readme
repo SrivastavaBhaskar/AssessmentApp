@@ -1,0 +1,58 @@
+Assessment Application:
+
+Main Functionalities:
+    - Start an Assessment
+    - Upload Questionnaire
+    - Perform Assessment
+    - Perform Scoring
+    - Generate Reports
+
+Apps:
+    Assessment:
+        - Basic Information
+        - Upload Assessment
+        - Process Assessment
+        - Take responses as input
+        - Take remarks as input
+    Reporting: 
+        - Generate Scoring
+        - Generate Reports
+
+Basic Information:
+    OrgName
+    ProjectName
+    ApplicationName
+Assessment:
+    Domain
+    Sub Domain
+    Question
+    Description
+    Level
+    Weight
+    Risk
+    Remediation
+    Response(Yes,No,Partial)
+    Remarks
+
+Required Fields in Assessment Excel File:
+    Domain
+    Sub Domain
+    Question
+    Description
+    Level
+    Remediation
+    Risk
+    Response
+    Remarks
+
+Levels and Weightage:
+    - If Level Field is empty, The Level would be defaulted to 1.
+    - Weights will be calculated as Level * 0.25
+    - If the response is Yes, the rating for the question will be Weight
+    - If the response is Partial, the rating for the question will be 0.5 * Weight
+    - If the response is No, the rating for the question will be 0
+    - Sub-Domain Wise Rating will be calculated as: 
+        (SUM(Ratings for all questions in Sub-Domain) / SUM(Weights for all questions in Sub-Domain)) * 5
+    - Domain Wise Rating will be calculated as:
+        (SUM(Sub-Domain Wise Rating) / (5 * COUNT(Sub-Domain))) * 5
+

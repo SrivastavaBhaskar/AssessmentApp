@@ -1,0 +1,21 @@
+/* SVG styling */
+/* svg {
+	width: 800px;
+	height: 800px;
+}
+#chart svg {
+	height: 800px;
+} */
+path {
+	stroke: #222;
+	stroke-width: 0.1px;
+}
+
+.labels {
+	fill: #222;
+	font-weight: 200;
+	letter-spacing: -1px;
+}
+.labels.segment {
+	font-size: 10px;
+}
